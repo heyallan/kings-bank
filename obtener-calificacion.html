@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Evaluación - Allan Moreno</title>
+	<link rel="icon" href="https://fav.farm/👑" />
+	<link rel="stylesheet" href="css/reset.min.css">
+	<link rel="stylesheet" href="css/layout.min.css">
+	<link rel="stylesheet" href="css/properties.min.css">
+	<link rel="stylesheet" href="css/main.css">
+	<script src="js/main.js" defer></script>
+</head>
+<body>
+	<header>
+		<h1>👑 King's Bank</h1>
+	</header>
+	<aside>
+		<nav>
+			<fieldset>
+				<legend>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+					Menú de navegación
+				</legend>
+				<ol start="0" style="padding-left: 1.5em">
+					<li>
+						<a href="index.html">Inicio</a>
+					</li>
+					<li>
+						<a href="crear-cuenta.html">Crear cuenta</a>
+					</li>
+					<li>
+						<a href="ver-cuenta.html">Ver cuenta</a>
+					</li>
+					<li>
+						<a href="obtener-calificacion.html">Obtener calificación</a>
+					</li>
+					<li>
+						<a href="solicitar-tarjeta.html">Solicitar tarjeta</a>
+					</li>
+					<li>
+						<a href="enviar-mensaje.html">Enviar mensaje</a>
+					</li>
+					<li>
+						<a href="eliminar-cuenta.html">Eliminar cuenta</a>
+					</li>
+					<li>
+						<a href="#!" data-action="logout">Cerrar sesión</a>
+					</li>
+				</ol>
+			</fieldset>
+		</nav>
+	</aside>
+	<main>
+		<form id="obtener_calificacion" name="obtener_calificacion" novalidate>
+			<fieldset data-hideon="loggedin">
+				<legend>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+					Mensaje
+				</legend>
+				<p>Usted debe registrarse para acceder a esta página</p>
+			</fieldset>
+			<fieldset data-displayon="loggedin">
+				<legend>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+					Obtener calificación de crédito
+				</legend>
+				<p>
+					<label for="nombre">Nombre:</label><br>
+					<input type="text" id="nombre" name="nombre">
+				</p>
+				<div class="padding-y-0.5">
+					<div>Tipo de ingreso:</div>
+					<label class="padding-0" for="tipo_de_ingreso_1"><input id="tipo_de_ingreso_1" name="tipo_de_ingreso" type="radio" value="asalariado"> Asalariado</label><br>
+					<label class="padding-0" for="tipo_de_ingreso_2"><input id="tipo_de_ingreso_2" name="tipo_de_ingreso" type="radio" value="independiente"> Independiente</label><br>
+					<label class="padding-0" for="tipo_de_ingreso_3"><input id="tipo_de_ingreso_3" name="tipo_de_ingreso" type="radio" value="otro"> Otro...</label><br>
+				</div>
+				<p>
+					<label for="ingreso">Monto de ingreso:</label><br>
+					<input id="ingreso" name="ingreso" type="number" step="100000">
+				</p>
+				<p>
+					<button type="submit" id="boton_enviar">Obtener</button>
+					<button type="button" onclick="alert('Como cliente King\'s Bank usted puede aspirar a una de las siguientes tarjetas, según su ingreso:\n\n- Menos de 400,000: Tarjeta Normal\n- Entre 400,000 y 800,000: Tarjeta Platinum\n- Más de 800,000 Tarjeta Dorada\n\nPara contactar a servicio al cliente llame al 1-800-KINGS-BANK')">Ayuda</button>
+				</p>
+				<!-- mensaje resultado -->
+				<p id="banner_resultado"></p>
+				<!-- icono de tarjeta -->
+				<div id="icon_card_container" style="display: none;">
+					<svg width="150" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 368.6 242.7">
+						<rect id="icon_card_background" width="368.6" height="242.7" rx="9.5" style="fill:royalblue"/>
+						<path d="M137 296a25 25 0 1 1-8 18 25 25 0 0 1 8-18Z" transform="translate(-70 -125)" style="fill:#ef9929"/>
+						<path d="M104 296a25 25 0 1 1-8 18 25 25 0 0 1 8-18Z" transform="translate(-70 -125)" style="fill:#d92028"/>
+						<text transform="translate(23 142)" style="fill:#fff; font-size:25px; font-family:monospace">1234 5678 9876 5432</text>
+						<text transform="translate(120 195)" style="fill:#fff; font-size:22px; font-family:sans-serif" id="icon_card_name"></text>
+						<text transform="translate(23 47)" style="fill:#fff; font-size:28.67px; font-family:sans-serif; font-weight:700;">KING’S BANK</text>
+					</svg>
+					<p class="margin-y-1">Solicite su tarjeta en la página: "Solicitar tarjeta"</p>
+				</div>
+			</fieldset>
+		</form>
+
+	</main>
+</body>
+</html>

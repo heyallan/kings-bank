@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Evaluación - Allan Moreno</title>
+	<link rel="icon" href="https://fav.farm/👑" />
+	<link rel="stylesheet" href="css/reset.min.css">
+	<link rel="stylesheet" href="css/layout.min.css">
+	<link rel="stylesheet" href="css/properties.min.css">
+	<link rel="stylesheet" href="css/main.css">
+	<script src="js/main.js" defer></script>
+</head>
+<body>
+	<header>
+		<h1>👑 King's Bank</h1>
+	</header>
+	<aside>
+		<nav>
+			<fieldset>
+				<legend>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+					Menú de navegación
+				</legend>
+				<ol start="0" style="padding-left: 1.5em">
+					<li>
+						<a href="index.html">Inicio</a>
+					</li>
+					<li>
+						<a href="crear-cuenta.html">Crear cuenta</a>
+					</li>
+					<li>
+						<a href="ver-cuenta.html">Ver cuenta</a>
+					</li>
+					<li>
+						<a href="obtener-calificacion.html">Obtener calificación</a>
+					</li>
+					<li>
+						<a href="solicitar-tarjeta.html">Solicitar tarjeta</a>
+					</li>
+					<li>
+						<a href="enviar-mensaje.html">Enviar mensaje</a>
+					</li>
+					<li>
+						<a href="eliminar-cuenta.html">Eliminar cuenta</a>
+					</li>
+					<li>
+						<a href="#!" data-action="logout">Cerrar sesión</a>
+					</li>
+				</ol>
+			</fieldset>
+		</nav>
+	</aside>
+	<main>
+		<form name="eliminar_cuenta" id="eliminar_cuenta" novalidate>
+			<fieldset data-hideon="loggedin">
+				<legend>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+					Mensaje
+				</legend>
+				<p>Usted debe registrarse para acceder a esta página</p>
+			</fieldset>
+			<fieldset data-displayon="loggedin">
+				<legend>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
+					Eliminar cuenta
+				</legend>
+				<div>Condiciones de eliminación:</div>
+				<div>Al eliminar su cuenta usted perderá todos sus datos</div>
+				<div>
+					<label class="padding-0 margin-bottom-1" for="acepto_las_condiciones">
+						<input type="checkbox" id="acepto_las_condiciones" name="acepto_las_condiciones"> Acepto las condiciones
+					</label>
+				</div>
+				<button type="submit">Eliminar cuenta</button>
+			</fieldset>
+		</form>
+
+	</main>
+</body>
+</html>

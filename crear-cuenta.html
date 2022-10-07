@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Evaluación - Allan Moreno</title>
+	<link rel="icon" href="https://fav.farm/👑" />
+	<link rel="stylesheet" href="css/reset.min.css">
+	<link rel="stylesheet" href="css/layout.min.css">
+	<link rel="stylesheet" href="css/properties.min.css">
+	<link rel="stylesheet" href="css/main.css">
+	<script src="js/main.js" defer></script>
+</head>
+<body>
+	<header>
+		<h1>👑 King's Bank</h1>
+	</header>
+	<aside>
+		<nav>
+			<fieldset>
+				<legend>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+					Menú de navegación
+				</legend>
+				<ol start="0" style="padding-left: 1.5em">
+					<li>
+						<a href="index.html">Inicio</a>
+					</li>
+					<li>
+						<a href="crear-cuenta.html">Crear cuenta</a>
+					</li>
+					<li>
+						<a href="ver-cuenta.html">Ver cuenta</a>
+					</li>
+					<li>
+						<a href="obtener-calificacion.html">Obtener calificación</a>
+					</li>
+					<li>
+						<a href="solicitar-tarjeta.html">Solicitar tarjeta</a>
+					</li>
+					<li>
+						<a href="enviar-mensaje.html">Enviar mensaje</a>
+					</li>
+					<li>
+						<a href="eliminar-cuenta.html">Eliminar cuenta</a>
+					</li>
+					<li>
+						<a href="#!" data-action="logout">Cerrar sesión</a>
+					</li>
+				</ol>
+			</fieldset>
+		</nav>
+	</aside>
+	<main>
+		<form name="crear_cuenta" id="crear_cuenta" novalidate>
+			<fieldset>
+				<legend>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+					Crear cuenta
+				</legend>
+				<p>
+					<label for="email">Email:</label><br>
+					<input type="email" name="email" id="email" autocomplete="username">
+				</p>
+				<p>
+					<label for="password">Contraseña:</label><br>
+					<input type="password" name="password" id="password" autocomplete="current-password">
+				</p>
+				<p>
+					<button type="submit">Crear cuenta</button>
+				</p>
+				<p id="banner_resultado"></p>
+			</fieldset>
+		</form>
+	</main>
+</body>
+</html>
