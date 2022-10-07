@@ -1,2 +1,9 @@
-# kings-bank
-Kings Bank - Test Project
+# Kings Bank
+
+> Kings Bank - Test Playground
+
+## Stack
+
+- HTML
+- CSS
+- JS
