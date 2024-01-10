@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Kings Bank - Test Website</title>
+	<link rel="icon" href="https://fav.farm/👑" />
+	<link rel="stylesheet" href="css/reset.min.css">
+	<link rel="stylesheet" href="css/layout.min.css">
+	<link rel="stylesheet" href="css/properties.min.css">
+	<link rel="stylesheet" href="css/main.css">
+	<script src="js/main.js" defer></script>
+</head>
+<body>
+<header>
+	<h1>👑 King's Bank</h1>
+</header>
+<aside>
+	<ui-navbar></ui-navbar>
+</aside>
+<main>
+	<form name="check_xrate" id="check_xrate" novalidate>
+		<fieldset>
+			<legend>
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10" /><line x1="2" x2="22" y1="12" y2="12" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" /></svg>
+				Consultar tipo de cambio del día de hoy
+			</legend>
+			<p><label for="currency_1">Seleccionar divisa:</label></p>
+			<select class="margin-bottom-1 font-size-sm" name="currency_1" id="currency_1">
+				<option value="usd">$ USD USD Dollar</option>
+				<option value="eur">€ EUR EU Euro</option>
+				<option value="gbp">£ GBP British Pound</option>
+				<option value="brl">R$ BRL Brazilian Real</option>
+			</select>
+			<p>
+				<button type="submit">Consultar</button>
+				<svg id="loader-icon" class="hide margin-left-0.5" xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 50 50"><path fill="crimson" d="M25,5A20.14,20.14,0,0,1,45,22.88a2.51,2.51,0,0,0,2.49,2.26h0A2.52,2.52,0,0,0,50,22.33a25.14,25.14,0,0,0-50,0,2.52,2.52,0,0,0,2.5,2.81h0A2.51,2.51,0,0,0,5,22.88,20.14,20.14,0,0,1,25,5Z"><animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="1s" repeatCount="indefinite"/></path></svg>
+			</p>
+			<p id="banner_resultado"></p>
+		</fieldset>
+	</form>
+
+</main>
+</body>
+</html>

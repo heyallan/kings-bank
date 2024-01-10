@@ -1,3 +1,51 @@
+class Navbar extends HTMLElement {
+	constructor() {
+		super()
+	}
+
+	connectedCallback() {
+		this.innerHTML = `
+<nav>
+	<fieldset>
+		<legend>
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+			Menú de navegación
+		</legend>
+		<ol start="0" style="padding-left: 1.5em">
+			<li>
+				<a href="index.html">Inicio</a>
+			</li>
+			<li>
+				<a href="crear-cuenta.html">Crear cuenta</a>
+			</li>
+			<li>
+				<a href="ver-cuenta.html">Ver cuenta</a>
+			</li>
+			<li>
+				<a href="obtener-calificacion.html">Obtener calificación</a>
+			</li>
+			<li>
+				<a href="solicitar-tarjeta.html">Solicitar tarjeta</a>
+			</li>
+			<li>
+				<a href="enviar-mensaje.html">Enviar mensaje</a>
+			</li>
+			<li>
+				<a href="eliminar-cuenta.html">Eliminar cuenta</a>
+			</li>
+			<li>
+				<a href="tipo-de-cambio.html">Tipo de cambio</a>
+			</li>
+			<li>
+				<a href="#!" data-action="logout">Cerrar sesión</a>
+			</li>
+		</ol>
+	</fieldset>
+</nav>
+		`
+	}
+} customElements.define('ui-navbar', Navbar);
+
 // colores
 // ----- ----- ----- ----- -----
 // mensaje de alerta
@@ -323,6 +371,26 @@ document.querySelectorAll('[data-display]').forEach(function(element) {
 
 
 
+// $ check exchange rate
+// ----- ----- ----- -----
+(function() {
+	var form = document.querySelector('#check_xrate');
+	var loaderIcon = document.querySelector('#loader-icon');
+	var banner_resultado = document.querySelector('#banner_resultado');
+	if (form === null) return false;
+	form.onsubmit = function(event) {
+		event.preventDefault();
+		loaderIcon.classList.remove('hide');
+		setTimeout(function() {
+			var random = Math.random();
+			banner_resultado.innerHTML = `<pre id="query_result">Valor: ${random}</pre>`;
+			loaderIcon.classList.add('hide');
+		}, 3000);
+	}
+})();
+
+
+
 // $ cerrar sesión (logout simbólico)
 // ----- ----- ----- ----- -----
 // obtener botón
@@ -382,6 +450,8 @@ function asignar_calificacion_segun_ingreso(ingreso = 0) {
 })()
 
 
+// $ toggle password field visibility
+// ----------------------------------
 ;(function() {
 	const toggler = document.querySelector('[data-action="toggle-password"]')
 	if (toggler === null) return
@@ -393,4 +463,5 @@ function asignar_calificacion_segun_ingreso(ingreso = 0) {
 			target.setAttribute('type', 'password')
 		}
 	})
-})()
+})();
+
