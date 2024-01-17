@@ -19,20 +19,31 @@
 		<ui-navbar></ui-navbar>
 	</aside>
 	<main>
-		<form name="crear_cuenta" id="crear_cuenta" novalidate>
+		<form name="signup" id="signup">
 			<fieldset>
 				<legend>
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
 					Crear cuenta
 				</legend>
-				<p>
-					<label for="email">Email:</label><br>
-					<input type="email" name="email" id="email" autocomplete="username">
-				</p>
-				<p>
-					<label for="password">Contraseña:</label><br>
-					<input type="password" name="password" id="password" autocomplete="current-password">
-				</p>
+				<div class="margin-bottom-1">
+					<label for="email" class="padding-0 display-block margin-bottom-0.5">Email:</label>
+					<input type="email" name="email" id="email" required pattern="[a-zA-Z0-9\._%+\-]{1,}@[a-zA-Z0-9\.\-]{1,}\.[a-zA-Z]{2,}" autocomplete="off">
+					<div class="font-size-small color-muted" aria-hidden="true"><span id="hint-email">•</span> nombre@email.com</div>
+				</div><!--/group-->
+				<div class="margin-bottom-1">
+					<label for="password" class="padding-0 display-block margin-bottom-0.5">Contraseña:</label>
+					<input type="password" name="password" id="password" required pattern="(?=.{0,}\d).{1,}(?=.{0,}[A-Za-z]).{1,}" autocomplete="off">
+					<div class="font-size-small color-muted" aria-hidden="true">
+						<span id="hint-letters">•</span> Letras
+						<span id="hint-numbers">•</span> Números
+					</div>
+				</div><!--/group-->
+				<div class="margin-bottom-1">
+					<label>
+						<input type="checkbox" name="t&c" id="t&c" required>
+						Téminos y condiciones
+					</label>
+				</div>
 				<p>
 					<button type="submit">Crear cuenta</button>
 				</p>

@@ -1,8 +1,11 @@
+/**
+ * custom elements
+ * import at the top as elements need to exist before interaction
+ */
 class Navbar extends HTMLElement {
 	constructor() {
 		super()
 	}
-
 	connectedCallback() {
 		this.innerHTML = `
 <nav>
@@ -45,6 +48,72 @@ class Navbar extends HTMLElement {
 		`
 	}
 } customElements.define('ui-navbar', Navbar);
+
+
+
+class Alert extends HTMLElement {
+	constructor() {
+		super()
+	}
+	connectedCallback() {
+		/**
+		 * types
+		 * - info
+		 * - success
+		 * - error
+		 */
+		let type = undefined;
+		let text = undefined;
+		const preset = this.getAttribute('data-preset') || undefined;
+		if (preset) {
+			// generic preset messages
+			switch (preset) {
+				case 'login':
+					type = 'warning';
+					text = 'Usted debe registrarse primero';
+					break;
+				case 'success':
+					type = 'green';
+					text = '✅ Listo: Operación realizada';
+					break;
+				case 'error':
+					type = 'red';
+					text = '❌ Error: Operación fallida';
+					break;
+				default:
+					type = 'primary';
+					text = 'Mensaje por defecto';
+			}
+		}
+		else {
+			// custom messages
+			text = this.getAttribute('data-text') || 'Mensaje de alert sin texto';
+			type = this.getAttribute('data-type');
+			switch (type) {
+				case 'info':
+					type = 'primary';
+					break;
+				case 'success':
+					type = 'green';
+					break;
+				case 'error':
+					type = 'red';
+					break;
+				default:
+					type = 'default';
+			}
+		}
+		this.innerHTML =   `
+<div class='padding-1 border border-radius border-color-${type} bg-${type}-light'>
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10" /><line x1="12" x2="12" y1="16" y2="12" /><line x1="12" x2="12.01" y1="8" y2="8" /></svg>
+	${text}
+</div>
+		`
+	}
+} customElements.define('ui-alert', Alert);
+
+
+
 
 // colores
 // ----- ----- ----- ----- -----
@@ -118,60 +187,67 @@ document.querySelectorAll('[data-display]').forEach(function(element) {
 			element.innerText = datum_value
 		}
 	}
-})
+});
 
 
 
-// $ crear cuenta
+// $ signup
 // ----- ----- ----- ----- -----
-;(function() {
-	// obtener formulario
-	const formulario_crear_cuenta = document.querySelector('form#crear_cuenta')
-	// si el formulario no existe entonces salir
-	if (formulario_crear_cuenta === null) return;
-	// asignar manejador de evento
-	formulario_crear_cuenta.onsubmit = function(event) {
-		// prevenir envío automático del formulario
-		event.preventDefault()
-		// variables de trabajo
-		const banner_resultado  = formulario_crear_cuenta.querySelector('#banner_resultado')
-		let texto_resultado = ''
-		// obtener datos del formulario
-		const data     = new FormData(formulario_crear_cuenta)
-		const email    = data.get('email')
-		const password = data.get('password')
-		const emailPattern = /[a-zA-Z0-9\.\_\-\+]{1,}@[a-zA-Z0-9\.\-]{1,}\.[a-zA-Z]{2,6}/;
-		const digitPattern = /\d/;
-		const letterPattern = /[a-zA-Z]/;
-		// validar campo email
-		if (email === '') {
-			texto_resultado = '❌ El campo "Email" es obligatorio'
+(function() {
+	// form
+	const form_signup = document.querySelector('form#signup')
+	if (form_signup === null) return;
+	// hint email
+	const emailField = document.querySelector('#email');
+	const hintEmail = document.querySelector('#hint-email');
+	emailField.addEventListener('input', function(event) {
+		if (emailField.validity.valid) {
+			hintEmail.classList.remove('color-red');
+			hintEmail.classList.add('color-green');
+			hintEmail.innerText = '✓';
 		}
-		// validar formato de email
-		else if (email.match(emailPattern) === null) {
-			texto_resultado = '❌ El campo "Email" debe cumplir el formato "nombre@email.com"'
+	});
+	emailField.addEventListener('blur', function(event) {
+		if (emailField.validity.valid === false) {
+			hintEmail.classList.remove('color-green');
+			hintEmail.classList.add('color-red');
+			hintEmail.innerText = '×';
 		}
-		// validar contraseña
-		else if (password === '') {
-			texto_resultado = '❌ El campo "Contraseña" es obligatorio'
+	});
+	// hint password
+	const passwordField = document.querySelector('#password');
+	const hintLetters = document.querySelector('#hint-letters');
+	const hintNumbers = document.querySelector('#hint-numbers');
+	passwordField.addEventListener('input', function(event) {
+		if (passwordField.value.match(/(?=.{0,}[A-Za-z]).{1,}/g)) {
+			hintLetters.classList.remove('color-red');
+			hintLetters.classList.add('color-green');
+			hintLetters.innerText = '✓';
+		} else {
+			hintLetters.classList.remove('color-green');
+			hintLetters.classList.add('color-red');
+			hintLetters.innerText = '×';
 		}
-		// validar formato de contraseña
-		else if (password.match(letterPattern) === null || password.match(digitPattern) === null) {
-			texto_resultado = '❌ El campo "Contraseña" debe contener letras y números'
+		if (passwordField.value.match(/(?=.{0,}\d).{1,}/g)) {
+			hintNumbers.classList.remove('color-red');
+			hintNumbers.classList.add('color-green');
+			hintNumbers.innerText = '✓';
+		} else {
+			hintNumbers.classList.remove('color-green');
+			hintNumbers.classList.add('color-red');
+			hintNumbers.innerText = '×';
 		}
-		// si no hay errores, proceder
-		else {
-			// registrar datos en la memoria del navegador
-			sessionStorage.setItem('loggedin', true)
-			sessionStorage.setItem('email', email)
-			sessionStorage.setItem('password', password)
-			// redirigir a la página de perfil
-			window.location.href = 'ver-cuenta.html'
-		}
-		// mostrar resultado
-		banner_resultado.innerText = texto_resultado
+	});
+	// on submit
+	form_signup.onsubmit = function(event) {
+		event.preventDefault(); // prevent reload
+		sessionStorage.setItem('loggedin', true);
+		sessionStorage.setItem('email', emailField.value);
+		sessionStorage.setItem('password', passwordField.value);
+		window.location.href = 'ver-cuenta.html';
+		console.log('you are here');
 	}
-})(); // fin de crear cuenta
+})();
 
 
 
